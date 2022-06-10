@@ -17,7 +17,7 @@ export default function App() {
       'x-auth-token': token
     }
 
-    axios.post("http://127.0.0.1:9000/api/task", content, { headers: headers })
+    axios.post("http://192.168.0.5:9000/api/task", content, { headers: headers })
     .catch(err => console.log(err))
 
     setTask(null)
@@ -25,7 +25,7 @@ export default function App() {
   }
 
   const getTasks = () => {
-    axios.get("http://127.0.0.1:9000/api/tasks")
+    axios.get("http://192.168.0.5:9000/api/tasks")
     .then(res => {
       setTasks(res.data.data)
       setToken(res.data.token)
@@ -100,8 +100,6 @@ const styles = StyleSheet.create({
   inputWrapper: {
     position: "absolute",
     bottom: 60,
-    display: "flex",
-    flexWrap: "wrap",
     gap: 10,
     width: "100%",
     justifyContent: "space-around",
@@ -114,6 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderColor: "#c0c0c0",
     borderWidth: 1,
+    marginTop: 10,
     width: 250
   },
   addWrapper: {
@@ -124,7 +123,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: "center",
     borderColor: "#c0c0c0",
-    borderWidth: 1
+    borderWidth: 1,
+    marginTop: 10
   },
   add: {
     color: "white"
