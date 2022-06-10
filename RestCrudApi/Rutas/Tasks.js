@@ -30,11 +30,12 @@ router.post('/task',
 
 router.get('/tasks',
     (req, res) => {
+        const ip = req.connection.remoteAddress
         res.set('Access-Control-Allow-Origin', '*');
         tasksSchema
             .find()
             .then((data) => {
-                res.send({token: token, data: data})
+                res.send({token: token, data: data, ip: ip})
             })
             .catch((error) => {
                 res.json({
